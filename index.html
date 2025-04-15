@@ -3,10 +3,57 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    
     <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- fonts  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Jost:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div class="container">
+      <h2>Currency Converter</h2>
+      <form>
+        <div class="amount">
+          <p>Enter Amount</p>
+          <input type="text" value="100" />
+        </div>
+        <div class="dropdown">
+          <div class="from">
+            <p>Convert From</p>
+            <div class="select-container">
+              <img src="https://flagsapi.com/US/flat/64.png" alt="" srcset="" />
+              <select name="from">
+                <option value="USD" selected>USD</option>
+                <option value="NPR">NPR</option>
+                <option value="GBP">JPN</option>
+                <option value="JPY">AUD</option>
+              </select>
+            </div>
+          </div>
+          <i class="fa-solid fa-right-left"></i>
+          <div class="TO">
+            <p>Convert To</p>
+            <div class="select-container">
+              <img src="https://flagsapi.com/NP/flat/64.png" />
+              <select name="to">
+                <option value="USD">USD</option>
+                <option value="NPR" selected >NPR</option>
+                <option value="GBP">JPN</option>
+                <option value="JPY">AUD</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="msg">1USD = 130 NPR</div>
+        <button class="button">Get Exchange Rate</button>
+      </form>
+    </div>
+
     <script src="app.js"></script>
   </body>
 </html>
