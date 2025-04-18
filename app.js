@@ -65,7 +65,6 @@ btn.addEventListener("click", (event) => {
   event.preventDefault();
   UpdateFunct();
 });
-
 window.addEventListener("load", () => {
   UpdateFunct();
 });
