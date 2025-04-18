@@ -5,31 +5,6 @@ const convert = document.querySelector(".msg");
 const fromCurr = document.querySelector(".from select");
 const toCurr = document.querySelector(".to select");
 
-// const dropdowns = document.querySelectorAll(".dropdown select");
-
-// for (select of dropdowns) {
-//   for (currCode in countryList) {
-//     let newOption = document.createElement("option");
-//     newOption.value = currCode;
-//     newOption.innerText = currCode;
-//     if (select.name == "from" && currCode == "USD") {
-//       newOption.selected = "selected";
-//     } else select.name == "to" && currCode == "NPR";
-//     select.append(newOption);
-//   }
-//   select.addEventListener("change", (event) => {
-//     updateFlag(event.target);
-//   });
-// }
-
-// const updateFlag = (element) => {
-//   let currCode = element.value;
-//   let countryCode = countryList[currCode];
-//   let newSrc = `https://flagsapi.com/${countryCode}/flat/64.png`;
-//   let img = element.parentElement.querySelector("img");
-//   img.src = newSrc;
-// };
-
 const dropdowns = document.querySelectorAll(".dropdown select ");
 for (select of dropdowns) {
   for (currCode in countryList) {
@@ -48,40 +23,24 @@ for (select of dropdowns) {
   });
 }
 
-const updateFlag = (element) => {
-  let currCode = element.value;
-  let countryCode = countryList[currCode];
-  let img = element.parentElement.querySelector("img");
-  let newSrc = `https://flagsapi.com/${countryCode}/flat/64.png`;
-
-  img.src = newSrc;
-};
-
-// btn.addEventListener("click", async (event) => {
-//   event.preventDefault();
-//   let amount = document.querySelector(".amount input");
-//   let amountVal = amount.value;
-//   amountVal = Number(amountVal);
-
-//   if (amountVal == "" || amountVal <= 1) {
-//     amountVal = 1;
-//     amount.value = "1";
-//   }
-//   console.log(fromCurr.value, toCurr.value);
-
-//   const URL = `${BASE_URL}.${fromCurr.value.toLowerCase()}.${toCurr.value.toLowerCase()}.json`;
-//   let response = await fetch(URL);
-//   console.log(response);
-// });
-btn.addEventListener("click", async (event) => {
-  event.preventDefault();
+const UpdateFunct = async () => {
   let amount = document.querySelector(".amount input");
-  let amountVal = Number(amount.value);
+  let amountVal = amount.value;
 
-  if (!amountVal || amountVal <= 1) {
+  if (amountVal === "" || amountVal < 1) {
     amountVal = 1;
     amount.value = "1";
   }
+//  should not take negative values and characters
+  if (amountVal < 0) {
+    convert.innerText = "Please enter a positive number";
+    return;
+  }
+  if (isNaN(amountVal)) {
+    convert.innerText = "Please enter a valid number";
+    return;
+  }
+
 
   const from = fromCurr.value.toLowerCase();
   const to = toCurr.value.toLowerCase();
@@ -91,4 +50,22 @@ btn.addEventListener("click", async (event) => {
   const rate = data[from][to];
   convertedAmount = (amountVal * rate).toFixed(2);
   convert.innerText = `${amountVal} ${from.toUpperCase()} = ${convertedAmount} ${to.toUpperCase()}`;
+};
+
+const updateFlag = (element) => {
+  let currCode = element.value;
+  let countryCode = countryList[currCode];
+  let img = element.parentElement.querySelector("img");
+  let newSrc = `https://flagsapi.com/${countryCode}/flat/64.png`;
+
+  img.src = newSrc;
+};
+
+btn.addEventListener("click", (event) => {
+  event.preventDefault();
+  UpdateFunct();
+});
+
+window.addEventListener("load", () => {
+  UpdateFunct();
 });
