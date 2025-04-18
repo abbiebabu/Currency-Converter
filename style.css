@@ -12,7 +12,7 @@ body {
 }
 .container {
   background-color: rgb(150, 203, 100);
-  padding: 2.0rem;
+  padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -31,8 +31,8 @@ input {
   border-radius: 0.5rem;
   border: none;
   margin-bottom: 1rem;
-  margin-top: .5rem;
-  padding-left:0.5rem ;
+  margin-top: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 form button {
@@ -58,29 +58,26 @@ form input {
   height: 2.75rem;
 }
 
-.dropdown{
+.dropdown {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem;
   gap: 3.5rem;
-
 }
-.select-container{
+.select-container {
   display: flex;
   flex-direction: column;
   margin-top: 0.5rem;
-  padding: 0.5rem
-  justify-content: center;
-  align-items: center;
+  padding: 0.5rem;
 }
-.select-container img{
+.select-container img {
   width: 5rem;
   height: 5rem;
   margin-bottom: 1rem;
 }
 
-.msg{
+.msg {
   display: flex;
   text-align: center;
   background-color: rgb(151, 236, 212);
@@ -91,7 +88,4 @@ form input {
   font-size: 1.2rem;
   font-weight: 500;
   color: rgb(50, 49, 49);
- 
 }
-
-
