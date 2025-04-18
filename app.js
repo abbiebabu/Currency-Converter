@@ -2,6 +2,9 @@ const BASE_URL =
   "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json";
 const btn = document.querySelector(".button");
 const convert = document.querySelector(".msg");
+const fromCurr = document.querySelector(".from select");
+const toCurr = document.querySelector(".to select");
+
 // const dropdowns = document.querySelectorAll(".dropdown select");
 
 // for (select of dropdowns) {
@@ -54,19 +57,38 @@ const updateFlag = (element) => {
   img.src = newSrc;
 };
 
-btn.addEventListener("click", (event) => {
+// btn.addEventListener("click", async (event) => {
+//   event.preventDefault();
+//   let amount = document.querySelector(".amount input");
+//   let amountVal = amount.value;
+//   amountVal = Number(amountVal);
+
+//   if (amountVal == "" || amountVal <= 1) {
+//     amountVal = 1;
+//     amount.value = "1";
+//   }
+//   console.log(fromCurr.value, toCurr.value);
+
+//   const URL = `${BASE_URL}.${fromCurr.value.toLowerCase()}.${toCurr.value.toLowerCase()}.json`;
+//   let response = await fetch(URL);
+//   console.log(response);
+// });
+btn.addEventListener("click", async (event) => {
   event.preventDefault();
   let amount = document.querySelector(".amount input");
-  let amountVal = amount.value;
-  amountVal = Number(amountVal);
-  if (isNaN(amountVal)) {
-    convert.innerText = "Please enter a valid number";
-    convert.style.backgroundColor = "darkred";
-    convert.style.color = "white";
-  }
+  let amountVal = Number(amount.value);
 
-  if (amountVal == "" || amountVal <= 1) {
+  if (!amountVal || amountVal <= 1) {
     amountVal = 1;
     amount.value = "1";
   }
+
+  const from = fromCurr.value.toLowerCase();
+  const to = toCurr.value.toLowerCase();
+  const URL = `https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/${from}.json`;
+  const response = await fetch(URL);
+  const data = await response.json();
+  const rate = data[from][to];
+  convertedAmount = (amountVal * rate).toFixed(2);
+  convert.innerText = `${amountVal} ${from.toUpperCase()} = ${convertedAmount} ${to.toUpperCase()}`;
 });
