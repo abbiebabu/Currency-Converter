@@ -31,7 +31,7 @@ const UpdateFunct = async () => {
     amountVal = 1;
     amount.value = "1";
   }
-//  should not take negative values and characters
+  //  should not take negative values and characters
   if (amountVal < 0) {
     convert.innerText = "Please enter a positive number";
     return;
@@ -40,7 +40,6 @@ const UpdateFunct = async () => {
     convert.innerText = "Please enter a valid number";
     return;
   }
-
 
   const from = fromCurr.value.toLowerCase();
   const to = toCurr.value.toLowerCase();
